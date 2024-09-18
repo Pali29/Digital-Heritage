@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Interactive India Map with Links</title>
+  <style>
+    .map-container {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+
+    .map-container svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .map-container a {
+      position: absolute;
+      display: block;
+    }
+
+    .tooltip {
+      position: absolute;
+      background: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="map-container">
+    <!-- Example SVG Map -->
+    <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+      <!-- Example state paths, replace with actual SVG paths for each state -->
+      <path id="KA" d="M10,10L50,10L50,50L10,50Z" fill="#ff5722" />
+      <path id="MH" d="M60,10L100,10L100,50L60,50Z" fill="#ff9800" />
+      <path id="TN" d="M10,60L50,60L50,100L10,100Z" fill="#00bcd4" />
+      <path id="TL" d="M60,60L100,60L100,100L60,100Z" fill="#00AE4D" />
+    </svg>
+
+    <!-- Tooltips -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- Links overlay -->
+    <a href="karnataka.html" id="link-KA" style="top: 10px; left: 10px; width: 40px; height: 40px;" target="_self"></a>
+    <a href="maharashtra.html" id="link-MH" style="top: 10px; left: 60px; width: 40px; height: 40px;" target="_self"></a>
+    <a href="tamilnadu.html" id="link-TN" style="top: 60px; left: 10px; width: 40px; height: 40px;" target="_self"></a>
+    <a href="telangana.html" id="link-TL" style="top: 60px; left: 60px; width: 40px; height: 40px;" target="_self"></a>
+  </div>
+
+  <script>
+    // JavaScript for tooltip display
+    document.querySelectorAll('.map-container a').forEach(link => {
+      link.addEventListener('mouseover', function(event) {
+        const tooltip = document.getElementById('tooltip');
+        tooltip.textContent = link.href.split('/').pop().replace('.html', '');
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${event.pageX + 10}px`;
+        tooltip.style.top = `${event.pageY + 10}px`;
+      });
+
+      link.addEventListener('mouseout', function() {
+        document.getElementById('tooltip').style.display = 'none';
+      });
+    });
+  </script>
+</body>
+
+</html>
