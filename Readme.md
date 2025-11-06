@@ -36,7 +36,7 @@ The repository hosts the initial prototype/idea and model files for the project.
 1. Clone this repository:
    ```bash
    git clone https://github.com/Pali29/Digital-Heritage.git
-````
+   '''
 
 2. Navigate into the project directory:
 
